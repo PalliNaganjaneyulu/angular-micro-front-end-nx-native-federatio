@@ -1,0 +1,31 @@
+<div class="table-container">
+
+    <table>
+        <thead>
+            <tr>
+                @for (column of columns(); track column.key) {
+                <th>{{ column.label }}</th>
+                }
+            </tr>
+        </thead>
+
+        <tbody>
+            @if (rows().length > 0) {
+            @for (row of rows(); track $index) {
+            <tr>
+                @for (column of columns(); track column.key) {
+                <td>{{ row[column.key] }}</td>
+                }
+            </tr>
+            }
+            } @else {
+            <tr>
+                <td [attr.colspan]="columns().length || 1" class="empty-message">
+                    {{ emptyMessage() }}
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

@@ -1,0 +1,20 @@
+@if (open()) {
+<dialog class="modal-backdrop" open tabindex="0" (click)="onBackdropClick($event)" (keydown.escape)="onClose()">
+    <div class="modal-container" [class.small]="size() === 'small'" [class.medium]="size() === 'medium'"
+        [class.large]="size() === 'large'" role="document">
+
+        <div class="modal-header">
+            <h2>{{ title() }}</h2>
+
+            <button type="button" class="close-button" aria-label="Close modal" (click)="onClose()">
+                &times;
+            </button>
+        </div>
+
+        <div class="modal-body">
+            <ng-content></ng-content>
+        </div>
+
+    </div>
+</dialog>
+}

@@ -3,56 +3,59 @@
     <h1>User Management</h1>
     <p>Manage banking platform users.</p>
 
-    <div class="content-card">
+    <shared-ui label="Add User" variant="primary" (clicked)="openAddUserModal()">
+    </shared-ui>
 
+    <div class="content-card">
         <h3>User Directory</h3>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>User ID</th>
-                    <th>Name</th>
-                    <th>Role</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <tr>
-                    <td>USR001</td>
-                    <td>Rahul</td>
-                    <td>Admin</td>
-                    <td>Active</td>
-                </tr>
-
-                <tr>
-                    <td>USR002</td>
-                    <td>Priya</td>
-                    <td>Provider</td>
-                    <td>Active</td>
-                </tr>
-
-                <tr>
-                    <td>USR003</td>
-                    <td>Arun</td>
-                    <td>Consumer</td>
-                    <td>Inactive</td>
-                </tr>
-            </tbody>
-        </table>
-
+        <shared-table [columns]="userColumns" [rows]="users" emptyMessage="No users available">
+        </shared-table>
     </div>
 
-    <shared-ui label="Add User" variant="primary" (clicked)="onAddUser()"></shared-ui>
+    <shared-ui label="Delete User" variant="danger" (clicked)="openDeleteConfirmation()">
+    </shared-ui>
+
+    <shared-confirmation-dialog [open]="isConfirmationOpen" title="Delete User?"
+        message="Are you sure you want to delete this user? This action cannot be undone." confirmText="Yes, Delete"
+        cancelText="Cancel" type="danger" (confirmed)="deleteUser()" (cancelled)="closeDeleteConfirmation()">
+    </shared-confirmation-dialog>
 
     <div class="form-fields">
 
         <shared-input id="user-search" label="Search User" placeholder="Enter user name" [value]="searchValue"
-            (valueChange)="onSearch($event)"></shared-input>
+            (valueChange)="onSearch($event)">
+        </shared-input>
 
         <shared-dropdown id="user-role" label="Select Role" placeholder="Choose a role" [options]="roles"
-            [value]="selectedRole" [required]="true" (valueChange)="onRoleChange($event)"></shared-dropdown>
+            [value]="selectedRole" [required]="true" (valueChange)="onRoleChange($event)">
+        </shared-dropdown>
 
     </div>
+
+    <shared-modal [open]="isModalOpen" title="Add New User" size="medium" (closed)="closeModal()">
+
+        <div class="modal-form">
+
+            <shared-input id="new-user-name" label="User Name" placeholder="Enter user name" [required]="true">
+            </shared-input>
+
+            <shared-dropdown id="new-user-role" label="User Role" placeholder="Select user role" [options]="roles"
+                [required]="true">
+            </shared-dropdown>
+
+            <div class="modal-actions">
+
+                <shared-ui label="Cancel" variant="secondary" (clicked)="closeModal()">
+                </shared-ui>
+
+                <shared-ui label="Save User" variant="primary" (clicked)="saveUser()">
+                </shared-ui>
+
+            </div>
+
+        </div>
+
+    </shared-modal>
 
 </section>
