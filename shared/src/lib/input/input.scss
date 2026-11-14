@@ -1,0 +1,45 @@
+:host {
+    display: block;
+    width: 100%;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+}
+
+label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #334155;
+}
+
+.required {
+    color: #dc2626;
+}
+
+input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease;
+
+    &:focus {
+        border-color: #2563eb;
+    }
+
+    &:disabled {
+        background: #f1f5f9;
+        cursor: not-allowed;
+    }
+
+    &::placeholder {
+        color: #94a3b8;
+    }
+}

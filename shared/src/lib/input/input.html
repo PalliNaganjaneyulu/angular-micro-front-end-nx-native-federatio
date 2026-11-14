@@ -1,0 +1,16 @@
+<div class="input-container">
+
+    @if (label()) {
+    <label [for]="id()">
+        {{ label() }}
+
+        @if (required()) {
+        <span class="required">*</span>
+        }
+    </label>
+    }
+
+    <input [id]="id()" [type]="type()" [placeholder]="placeholder()" [value]="value()" [disabled]="disabled()"
+        [required]="required()" (input)="onInput($event)" />
+
+</div>

@@ -1,0 +1,5 @@
+<button type="button" class="shared-button" [class.primary]="variant() === 'primary'"
+    [class.secondary]="variant() === 'secondary'" [class.danger]="variant() === 'danger'"
+    [class.success]="variant() === 'success'" [disabled]="disabled()" (click)="clicked.emit()">
+    {{ label() }}
+</button>
