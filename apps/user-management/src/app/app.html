@@ -5,7 +5,11 @@
 
     <shared-ui label="Add User" variant="primary" (clicked)="openAddUserModal()">
     </shared-ui>
+    <shared-loader [show]="isLoading" message="Loading user information..." size="large">
+    </shared-loader>
 
+    <!-- <shared-loader [show]="isLoading" message="Please wait, processing your request..." size="large" [overlay]="true">
+    </shared-loader> -->
     <div class="content-card">
         <h3>User Directory</h3>
 
@@ -57,5 +61,19 @@
         </div>
 
     </shared-modal>
+
+    <shared-ui label="Test Success Toast" variant="success" (clicked)="showSuccessToast()">
+    </shared-ui>
+
+    <shared-toast [show]="isToastVisible" [message]="toastMessage" [type]="toastType" [duration]="3000"
+        position="top-right" (dismissed)="closeToast()">
+    </shared-toast>
+
+    <shared-ui label="Test Error Toast" variant="danger" (clicked)="showErrorToast()">
+    </shared-ui>
+
+    <shared-toast [show]="isToastVisible" [message]="toastMessage" [type]="toastType" [duration]="5000"
+        position="top-right" (dismissed)="closeToast()">
+    </shared-toast>
 
 </section>

@@ -7,7 +7,7 @@ import {
   UiDropdown,
   UiTable,
   UiModal,
-  ConfirmationDialog
+  ConfirmationDialog, UiLoader, UiToast
 } from '@my-mfe-workspace/ui';
 
 import type {
@@ -25,7 +25,7 @@ import type {
     UiDropdown,
     UiTable,
     UiModal,
-    ConfirmationDialog
+    ConfirmationDialog, UiLoader, UiToast
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss',
@@ -34,8 +34,13 @@ export class App {
   protected title = 'user-management';
   isModalOpen = false;
   isConfirmationOpen = false;
+  isLoading = true;
+  isToastVisible = false;
   searchValue = '';
   selectedRole = '';
+
+  toastMessage = '';
+  toastType: 'success' | 'error' | 'warning' | 'info' = 'success';
 
   roles: DropdownOption[] = [
     { label: 'Admin', value: 'admin' },
@@ -114,4 +119,21 @@ export class App {
 
     this.closeDeleteConfirmation();
   }
+
+  showSuccessToast(): void {
+    this.toastMessage = 'User created successfully.';
+    this.toastType = 'success';
+    this.isToastVisible = true;
+  }
+
+  showErrorToast(): void {
+    this.toastMessage = 'Unable to process your request.';
+    this.toastType = 'error';
+    this.isToastVisible = true;
+  }
+
+  closeToast(): void {
+    this.isToastVisible = false;
+  }
+
 }

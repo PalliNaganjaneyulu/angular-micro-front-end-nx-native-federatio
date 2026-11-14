@@ -1,0 +1,29 @@
+@if (show() && message()) {
+<div class="toast-container" [class.success]="type() === 'success'" [class.error]="type() === 'error'"
+    [class.warning]="type() === 'warning'" [class.info]="type() === 'info'"
+    [class.top-right]="position() === 'top-right'" [class.top-left]="position() === 'top-left'"
+    [class.bottom-right]="position() === 'bottom-right'" [class.bottom-left]="position() === 'bottom-left'"
+    [attr.role]="type() === 'error' ? 'alert' : 'status'" aria-live="polite">
+
+    <div class="toast-icon" aria-hidden="true">
+        @if (type() === 'success') {
+        ✓
+        } @else if (type() === 'error') {
+        !
+        } @else if (type() === 'warning') {
+        ⚠
+        } @else {
+        i
+        }
+    </div>
+
+    <div class="toast-message">
+        {{ message() }}
+    </div>
+
+    <button type="button" class="toast-close" aria-label="Close notification" (click)="onClose()">
+        &times;
+    </button>
+
+</div>
+}

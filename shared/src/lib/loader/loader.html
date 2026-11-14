@@ -1,0 +1,16 @@
+@if (show()) {
+<div class="loader-wrapper" [class.overlay]="overlay()" role="status" aria-live="polite" aria-busy="true">
+
+    <div class="loader-content">
+
+        <div class="spinner" [class.small]="size() === 'small'" [class.medium]="size() === 'medium'"
+            [class.large]="size() === 'large'" aria-hidden="true">
+        </div>
+
+        @if (message()) {
+        <p class="loader-message">{{ message() }}</p>
+        }
+
+    </div>
+</div>
+}

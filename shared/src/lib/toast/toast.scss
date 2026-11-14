@@ -1,0 +1,167 @@
+.toast-container {
+    position: fixed;
+    z-index: 11000;
+
+    width: calc(100% - 40px);
+    max-width: 380px;
+    min-height: 64px;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 14px 16px;
+    box-sizing: border-box;
+
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid;
+    border-radius: 8px;
+
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
+
+    animation: toastEnter 0.25s ease-out;
+}
+
+.toast-container.top-right {
+    top: 24px;
+    right: 24px;
+}
+
+.toast-container.top-left {
+    top: 24px;
+    left: 24px;
+}
+
+.toast-container.bottom-right {
+    bottom: 24px;
+    right: 24px;
+}
+
+.toast-container.bottom-left {
+    bottom: 24px;
+    left: 24px;
+}
+
+.toast-container.success {
+    border-left-color: #16a34a;
+}
+
+.toast-container.error {
+    border-left-color: #dc2626;
+}
+
+.toast-container.warning {
+    border-left-color: #d97706;
+}
+
+.toast-container.info {
+    border-left-color: #2563eb;
+}
+
+.toast-icon {
+    flex-shrink: 0;
+
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.success .toast-icon {
+    color: #15803d;
+    background: #dcfce7;
+}
+
+.error .toast-icon {
+    color: #b91c1c;
+    background: #fee2e2;
+}
+
+.warning .toast-icon {
+    color: #b45309;
+    background: #fef3c7;
+}
+
+.info .toast-icon {
+    color: #1d4ed8;
+    background: #dbeafe;
+}
+
+.toast-message {
+    flex: 1;
+    color: #334155;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.toast-close {
+    flex-shrink: 0;
+
+    width: 28px;
+    height: 28px;
+
+    border: none;
+    border-radius: 5px;
+
+    background: transparent;
+    color: #64748b;
+
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.toast-close:hover {
+    background: #f1f5f9;
+    color: #172b4d;
+}
+
+.toast-close:focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+}
+
+@keyframes toastEnter {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 480px) {
+
+    .toast-container.top-right,
+    .toast-container.top-left {
+        top: 12px;
+        left: 12px;
+        right: 12px;
+        width: auto;
+    }
+
+    .toast-container.bottom-right,
+    .toast-container.bottom-left {
+        bottom: 12px;
+        left: 12px;
+        right: 12px;
+        width: auto;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .toast-container {
+        animation: none;
+    }
+}
