@@ -7,8 +7,61 @@
   "tags": [],
   "targets": {
     "build": {
+      "executor": "@angular-architects/native-federation:build",
+      "options": {
+        "cacheExternalArtifacts": true,
+        "tsConfig": "apps/my-mfe-workspace/tsconfig.federation.json"
+      },
+      "configurations": {
+        "production": {
+          "target": "my-mfe-workspace:esbuild:production"
+        },
+        "development": {
+          "target": "my-mfe-workspace:esbuild:development",
+          "dev": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-architects/native-federation:build",
+      "options": {
+        "target": "my-mfe-workspace:serve-original:development",
+        "tsConfig": "apps/my-mfe-workspace/tsconfig.federation.json",
+        "rebuildDelay": 500,
+        "cacheExternalArtifacts": true,
+        "dev": true,
+        "devServer": true,
+        "port": 0
+      }
+    },
+    "test": {
+      "executor": "@angular/build:unit-test",
+      "options": {
+        "watch": false
+      }
+    },
+    "serve-static": {
+      "continuous": true,
+      "readyWhen": {
+        "signal": true
+      },
+      "dependsOn": [
+        "build"
+      ],
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "my-mfe-workspace:build",
+        "port": 4200,
+        "staticFilePath": "dist/apps/my-mfe-workspace/browser",
+        "spa": true
+      }
+    },
+    "esbuild": {
       "executor": "@angular/build:application",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "defaultConfiguration": "production",
       "options": {
         "outputPath": "dist/apps/my-mfe-workspace",
@@ -20,7 +73,12 @@
             "input": "apps/my-mfe-workspace/public"
           }
         ],
-        "styles": ["apps/my-mfe-workspace/src/styles.css"]
+        "styles": [
+          "apps/my-mfe-workspace/src/styles.css"
+        ],
+        "polyfills": [
+          "es-module-shims"
+        ]
       },
       "configurations": {
         "production": {
@@ -45,7 +103,7 @@
         }
       }
     },
-    "serve": {
+    "serve-original": {
       "continuous": true,
       "readyWhen": {
         "signal": true
@@ -54,31 +112,14 @@
       "defaultConfiguration": "development",
       "configurations": {
         "production": {
-          "buildTarget": "my-mfe-workspace:build:production"
+          "buildTarget": "my-mfe-workspace:esbuild:production"
         },
         "development": {
-          "buildTarget": "my-mfe-workspace:build:development"
+          "buildTarget": "my-mfe-workspace:esbuild:development"
         }
-      }
-    },
-    "test": {
-      "executor": "@angular/build:unit-test",
-      "options": {
-        "watch": false
-      }
-    },
-    "serve-static": {
-      "continuous": true,
-      "readyWhen": {
-        "signal": true
       },
-      "dependsOn": ["build"],
-      "executor": "@nx/web:file-server",
       "options": {
-        "buildTarget": "my-mfe-workspace:build",
-        "port": 4200,
-        "staticFilePath": "dist/apps/my-mfe-workspace/browser",
-        "spa": true
+        "port": 4200
       }
     }
   }

@@ -1,0 +1,30 @@
+.remote-page {
+    padding: 20px;
+
+    h1 {
+        color: #142b4a;
+    }
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 24px;
+}
+
+.dashboard-card {
+    padding: 24px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+    h2 {
+        color: #087e8b;
+        font-size: 28px;
+    }
+
+    p {
+        color: #64748b;
+    }
+}
