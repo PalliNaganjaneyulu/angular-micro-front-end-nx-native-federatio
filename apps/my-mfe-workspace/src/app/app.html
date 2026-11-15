@@ -1,15 +1,29 @@
-<div class="app-layout">
-    <header class="app-header">
-        <h2>NFINITE Banking Platform</h2>
+<div class="min-h-screen bg-slate-100">
 
-        <nav>
-            <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
-            <a routerLink="/users" routerLinkActive="active">User Management</a>
-            <a routerLink="/reports" routerLinkActive="active">Reports</a>
+    <header class="bg-slate-900 px-8 py-5 text-white shadow-lg">
+        <h2 class="text-2xl font-bold">
+            NFINITE Banking Platform
+        </h2>
+
+        <nav class="mt-4 flex flex-wrap gap-6">
+            <a routerLink="/dashboard" class="text-slate-300 hover:text-white">
+                Dashboard
+            </a>
+
+            <a routerLink="/users" class="text-slate-300 hover:text-white">
+                User Management
+            </a>
+
+            <a routerLink="/reports" class="text-slate-300 hover:text-white">
+                Reports
+            </a>
         </nav>
     </header>
+
+
 
     <main class="app-content">
         <router-outlet></router-outlet>
     </main>
+
 </div>

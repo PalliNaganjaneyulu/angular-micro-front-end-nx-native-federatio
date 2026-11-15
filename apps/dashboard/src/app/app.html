@@ -1,7 +1,10 @@
 <section class="remote-page">
-    <h1>Dashboard</h1>
-    <p>Welcome to the NFINITE Banking Platform.</p>
+    <h1 class="text-3xl font-bold text-blue-900">Dashboard</h1>
+    <p class="mt-3 text-slate-600">Welcome to the NFINITE Banking Platform.</p>
 
+    <button class="mt-6 rounded-lg bg-blue-700 px-6 py-3 font-semibold text-white hover:bg-blue-800">
+        Test Tailwind Button
+    </button>
     <div class="dashboard-grid">
         <article class="dashboard-card">
             <h3>Total Transactions</h3>
@@ -23,6 +26,12 @@
     </div>
 
     <shared-ui label="Save" variant="primary" (clicked)="onSave()"></shared-ui>
+    <shared-ui label="Delete User" variant="danger" (clicked)="deleteUser()">
+    </shared-ui>
+    <shared-ui label="Approve" variant="success" (clicked)="approveUser()">
+    </shared-ui>
+    <shared-ui label="Submit" variant="primary" [disabled]="true">
+    </shared-ui>
 
 
 </section>

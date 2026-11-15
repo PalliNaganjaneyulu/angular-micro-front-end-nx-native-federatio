@@ -14,4 +14,10 @@ export class App {
   onSave(): void {
     console.log('Save button clicked');
   }
+  deleteUser() {
+    console.log('Delete User button clicked');
+  }
+  approveUser() {
+    console.log('Approve button clicked');
+  }
 }
