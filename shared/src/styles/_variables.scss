@@ -1,0 +1,18 @@
+/* NPCI Company Design Tokens */
+
+:root {
+    /* Font */
+    --npci-font-family: 'NPCI', sans-serif;
+
+    /* Typography colors */
+    --npci-text-grey: #757575;
+    --npci-text-black: #000000;
+
+    /* Border colors */
+    --npci-border-disabled: #f6f6f6;
+    --npci-border-accent-light: #c3dfec;
+    --npci-border-accent-light-1: #a0bff8;
+    --npci-border-negative: #f1998e;
+    --npci-border-warning: #ffe3ac;
+    --npci-border-positive: #66d19e;
+}

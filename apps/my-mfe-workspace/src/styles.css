@@ -1,6 +1,43 @@
 @import "tailwindcss";
 @source "../../../shared/src";
 
+
+/* NPCI Company Font Family */
+
+@font-face {
+    font-family: 'NPCI';
+    src: url('/assets/font/Montserrat-Regular-400.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NPCI';
+    src: url('/assets/font/Montserrat-Medium-500.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NPCI';
+    src: url('/assets/font/Montserrat-Black-900.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Global font */
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    font-family: 'NPCI', sans-serif;
+}
+
 /* Global application styles */
 html,
 body {

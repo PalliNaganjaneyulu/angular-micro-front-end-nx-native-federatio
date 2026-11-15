@@ -1,0 +1,32 @@
+<p-card>
+    <div class="flex items-center gap-4 p-2">
+        <!-- User Avatar -->
+        <div
+            class="flex h-12 w-12 items-center justify-center rounded-full bg-blue-100 text-lg font-bold text-blue-700">
+            {{ name().charAt(0).toUpperCase() }}
+        </div>
+
+        <!-- User Details -->
+        <div class="flex-1">
+            <h3 class="text-lg font-semibold text-gray-800">
+                {{ name() }}
+            </h3>
+
+            <p class="text-sm text-gray-500">
+                {{ email() }}
+            </p>
+
+            <div class="mt-2 flex items-center gap-2">
+                <span class="rounded bg-gray-100 px-2 py-1 text-xs text-gray-700">
+                    {{ role() }}
+                </span>
+
+                <span class="rounded px-2 py-1 text-xs" [class.bg-green-100]="status() === 'Active'"
+                    [class.text-green-700]="status() === 'Active'" [class.bg-red-100]="status() !== 'Active'"
+                    [class.text-red-700]="status() !== 'Active'">
+                    {{ status() }}
+                </span>
+            </div>
+        </div>
+    </div>
+</p-card>

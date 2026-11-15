@@ -6,3 +6,4 @@ export * from './lib/modal/modal';
 export * from './lib/confirmation-dialog/confirmation-dialog';
 export * from './lib/loader/loader';
 export * from './lib/toast/toast';
+export * from './lib/user-card/user-card';
